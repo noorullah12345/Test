@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Container Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int List<int> generate=List.generate(20, (index){
+    return 
+  })
+  int selectedfood = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(' Example'),
+      ),
+      body: PopupMenuButton(
+          onSelected: (String result) {
+            setState(() {
+              selectedfood = result;
+            });
+            switch(result){
+              case 1:
+
+            }
+          },
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                PopupMenuItem(
+                  value: 1,
+                  child: ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text('About Us'),
+                  ),
+                ),
+                PopupMenuItem(
+                    value: 2,
+                    child: ListTile(
+                      leading: Icon(Icons.phone),
+                      title: Text('Contact Us'),
+                    ))
+              ]),
+    );
+  }
+}

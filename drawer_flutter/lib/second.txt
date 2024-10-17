@@ -1,0 +1,19 @@
+Drawer(
+  child: ListView(
+    padding: EdgeInsets.zero,
+    children: <Widget>[
+      UserAccountsDrawerHeader(
+        accountName: Text('User Name'),
+        accountEmail: Text('user@example.com'),
+        currentAccountPicture: CircleAvatar(
+          backgroundColor: Colors.orange,
+          child: Text('U'),
+        ),
+      ),
+      ListTile(title: Text('Profile'), onTap: () {}),
+      ListTile(title: Text('Friends'), onTap: () {}),
+      ListTile(title: Text('Messages'), onTap: () {}),
+      ListTile(title: Text('Settings'), onTap: () {}),
+    ],
+  ),
+)

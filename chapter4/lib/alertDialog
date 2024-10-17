@@ -1,0 +1,66 @@
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Container Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  void AlertBox(BuildContext context, String title, String content) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(content),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('yes')),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();  
+                  },
+                  child: Text('No'))
+            ],
+          );
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(' Example'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            onPressed: () {
+              AlertBox(context, 'AlerBox',
+                  'your account are sucessfully created you want to procced the process');
+            },
+            child: Text('Alert Dialog')),
+      ),
+    );
+  }
+}

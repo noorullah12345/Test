@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Container Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  MyHomePage createState() => MyHomePage();
+}
+
+class MyHomePage extends State<HomePage> {
+  final List<String> days = [
+    'Monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'seturday',
+    'sunday'
+  ];
+  String selectedDay = 'Monday';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(' Example'),
+      ),
+      body: DropdownButton(
+          value: selectedDay,
+          items: days.map((String newVlaue) {
+            return DropdownMenuItem(
+              value: newVlaue,
+              child: Text(newVlaue),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            selectedDay = newValue!;
+          }),
+    );
+  }
+}

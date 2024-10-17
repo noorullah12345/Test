@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Friends List App',
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
+      home: FriendsListPage(),
+    );
+  }
+}
+
+class FriendsListPage extends StatelessWidget {
+  // List of friends' names
+  final List<String> friends = [
+    'Alice Johnson',
+    'Bob Smith',
+    'Charlie Davis',
+    'Diana Evans',
+    'Ethan Foster',
+    'Fiona Garcia',
+    'George Harris',
+    'Hannah Ingram',
+    'Ian Jackson',
+    'Julia King',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('My Friends'),
+        ),
+        body: ListView.builder(
+            itemCount: friends.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: Text(
+                    '${friends[index][0]}',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900),
+                  ),
+                ),
+                title: Text(
+                  '${friends[index]}',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                trailing: Icon(Icons.arrow_forward),
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Tapped on ${friends[index]}')));
+                },
+              );
+            }));
+  }
+}

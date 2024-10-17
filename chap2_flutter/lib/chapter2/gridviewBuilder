@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Friends List App',
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
+      home: FriendsListPage(),
+    );
+  }
+}
+
+class FriendsListPage extends StatelessWidget {
+  // List of friends' names
+  final List<String> imageUrls = [
+    'https://picsum.photos/250?image=237',
+    'https://picsum.photos/250?image=238',
+    'https://picsum.photos/250?image=239',
+    'https://picsum.photos/250?image=240',
+    'https://picsum.photos/250?image=241',
+    'https://picsum.photos/250?image=242',
+    'https://picsum.photos/250?image=243',
+    'https://picsum.photos/250?image=244',
+    // Add more image URLs
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('My Friends'),
+        ),
+        body: GridView.builder(
+            itemCount: 9,
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            itemBuilder: (BuildContext context, index) {
+              return Center(
+                child: index % 2 == 0 ? Text('X') : Text('O'),
+              );
+            }));
+  }
+}

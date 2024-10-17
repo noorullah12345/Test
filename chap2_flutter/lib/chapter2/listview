@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Container Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Chaptre 2'),
+        ),
+        body: ListView(
+          //it will place the widget it the end of the screen now you get it ?
+          reverse: true,
+          children: [
+            ListTile(
+              title: Text('Go to Gym'),
+              subtitle: Text('Go to Gym at 6:00 AM'),
+            ),
+            ListTile(
+              title: Text('Go to College'),
+              subtitle: Text('Go to College at 8:00 AM'),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Go to Office'),
+              subtitle: Text('Go to Office at 11:00 AM'),
+              trailing: Icon(Icons.animation_outlined),
+            ),
+            // Add more ListTiles as needed
+          ],
+        ));
+  }
+}

@@ -1,0 +1,92 @@
+import 'dart:convert';
+
+import 'package:chap3_flutter/access.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Container Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(' Local Json '),
+        ),
+        body: FutureBuilder(
+            future: loadPerson(),
+            builder: (BuildContext, snapchat) {
+              if (snapchat.hasData) {
+                List<Person> person = snapchat.data as List<Person>;
+                return ListView.builder(
+                    itemCount: person.length,
+                    itemBuilder: (context, index) {
+                      Person p = person[index];
+                      return SingleChildScrollView(
+                        child: Card(
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${p.id}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text('${p.name}',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                                Text(
+                                  '${p.age}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '${p.occupation}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    });
+              } else {
+                return CircularProgressIndicator();
+              }
+            }));
+  }
+}
+
+Future<List<Person>> loadPerson() async {
+  final JsonString = await rootBundle.loadString('assets/json/user.json');
+  final JsonResponse = jsonDecode(JsonString);
+  List<Person> person = [];
+  for (var personJson in JsonResponse) {
+    person.add(Person.fromJson(personJson));
+  }
+  ;
+  return person;
+}

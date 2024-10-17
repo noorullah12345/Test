@@ -1,0 +1,18 @@
+Drawer(
+  child: ListView(
+    padding: EdgeInsets.zero,
+    children: <Widget>[
+      DrawerHeader(
+        child: Text('Menu'),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+        ),
+      ),
+      ListTile(title: Text('Home'), onTap: () {}),
+      ListTile(title: Text('Categories'), onTap: () {}),
+      ListTile(title: Text('Orders'), onTap: () {}),
+      ListTile(title: Text('Wishlist'), onTap: () {}),
+      ListTile(title: Text('Settings'), onTap: () {}),
+    ],
+  ),
+)

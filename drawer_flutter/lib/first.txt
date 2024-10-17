@@ -1,0 +1,21 @@
+Drawer(
+  child: ListView(
+    children: const [
+      DrawerHeader(
+        child: Text('Drawer Header'),
+      ),
+      ListTile(
+        leading: Icon(Icons.home),
+        title: Text('Home'),
+      ),
+      ListTile(
+        leading: Icon(Icons.info),
+        title: Text('About'),
+      ),
+      ListTile(
+        leading: Icon(Icons.settings),
+        title: Text('Settings'),
+      ),
+    ],
+  ),
+)
