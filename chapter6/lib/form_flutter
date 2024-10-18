@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Container Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  final _FormKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(' Example'),
+        ),
+        body: Form(
+            key: _FormKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'First Name',
+                    hintText: 'Your Name',
+                  ),
+                  validator: (value) {
+                    if (value == '') {
+                      return 'Enter Your First Name';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Last Name',
+                    hintText: 'your Name',
+                  ),
+                  validator: (value) {
+                    if (value == '') {
+                      return 'Enter your Last Name';
+                    }
+                    return null;
+                  },
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      if (_FormKey.currentState!.validate()) {
+                        // Perform submission logic
+                      }
+                    },
+                    child: Text('Submit'))
+              ],
+            )));
+  }
+}
