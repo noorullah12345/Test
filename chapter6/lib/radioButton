@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Radio Button Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  // Define the variable to hold the selected radio value
+  String? selectedOption;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Radio Button Example'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          // Radio button options
+          RadioListTile(
+              title: Text('Option1'),
+              value: 'option1',
+              groupValue: selectedOption,
+              onChanged: (String? value) {
+                setState(() {
+                  selectedOption = value;
+                });
+              }),
+
+          RadioListTile(
+              title: Text('Option 2'),
+              value: 'Option2',
+              groupValue: selectedOption,
+              onChanged: (String? value) {
+                setState(() {
+                  selectedOption = value!;
+                });
+              }),
+          Text('selexted option ${selectedOption ?? "None"}')
+        ],
+      ),
+    );
+  }
+}

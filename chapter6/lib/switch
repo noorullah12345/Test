@@ -1,0 +1,50 @@
+import 'package:chapter6/checkbox';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(HomePage());
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material app page',
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => Page();
+}
+
+class Page extends State<MyHomePage> {
+ // App settings options
+Map<String, bool> appSettings = {
+  'Notifications': true,
+  'Dark Mode': false,
+  'Location Tracking': true,
+  'Automatic Updates': false,
+};
+  bool sw = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Scaffold Page'),
+      ),
+      body:ListView(
+        children:appSettings.keys.map((String key){
+          return SwitchListTile(value: appSettings[key]!, onChanged: (bool value){
+            setState(() {
+              appSettings[key]=value;
+            });
+          })
+        }).toList(),
+      )
+    );
+  }
+}

@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Checkbox Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<String> subjects = [
+    'Physics',
+    'Maths',
+    'Biology',
+    'Chemistry',
+    'Urdu',
+    'Pakstudy'
+  ];
+
+  // Use a list to store the checked subjects
+  List<String> selectedSubjects = [];
+  bool op = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Checkbox Example'),
+        ),
+        body: Column(
+          children: subjects.map((sub) {
+            return CheckboxListTile(
+                title: Text(sub),
+                value: selectedSubjects.contains(sub),
+                onChanged: (bool? value) {
+                  setState(() {
+                    if (value == true) {
+                      selectedSubjects.add(sub);
+                    } else {
+                      selectedSubjects.remove(sub);
+                    }
+                  });
+                });
+          }).toList(),
+        ));
+  }
+}
